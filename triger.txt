@@ -1,0 +1,34 @@
+ --trigger para convertir en mayusculas lo introducido en la tabla de juego
+ CREATE OR REPLACE FUNCTION  juego_mayus() RETURNS trigger  
+AS $$
+	BEGIN 
+	NEW.nombre_juego = UPPER(NEW.nombre_juego);
+	NEW.clasificacion = UPPER(NEW.clasificacion);
+	NEW.genero = UPPER(NEW.genero);
+	NEW.descripcion = UPPER(NEW.descripcion);
+    RETURN NEW ;-- retorna el contenido de la variable new
+	END; 
+$$ LANGUAGE PLPGSQL; 	
+	
+CREATE TRIGGER juego_mayus  BEFORE INSERT OR UPDATE ON juego--antes de insertar o antes de actualizar 
+  FOR EACH ROW EXECUTE FUNCTION juego_mayus();--para cada tupla ejecuta le 
+ 
+ --crear funcion que inserta una tupla en juego
+CREATE OR REPLACE FUNCTION crear_juegot(nombre_juegop juego.nombre_juego%TYPE, 
+											clasificacionp juego.clasificacion%TYPE,
+											generop juego.genero%TYPE,
+											descripcionp juego.descripcion%TYPE
+										   )RETURNS INTEGER--replace para poder editar 
+AS $$
+BEGIN
+	 --insertar una tupla en tabla de juego
+	 --LA FUNCION DEBE RECIBIR LOS DATOS A INGRESAR EN LA TUPLA
+ 	--nombrep pinacoteca.nombre%TYPE copia el tipo de dato  si no se conoce al parametro
+ 	 INSERT INTO juego(nombre_juego,clasificacion,genero,descripcion) 
+      VALUES (nombre_juegop,clasificacionp,generop,descripcionp);
+	 RETURN 1;
+ END
+  
+$$ LANGUAGE PLPGSQL-- su lenguaje 
+
+SELECT crear_juegot('mario','A','adventure','adictivo');
