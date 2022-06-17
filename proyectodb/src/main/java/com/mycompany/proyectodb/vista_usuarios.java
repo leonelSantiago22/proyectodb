@@ -18,6 +18,10 @@ public class vista_usuarios extends javax.swing.JFrame {
         initComponents();
         coneccion objetoconexion = new coneccion();
         objetoconexion.establecerConecxionstatic();
+        //mostrar la coneecion se realizo o no
+          
+        usarios objetoUsuarios = new usarios();
+        objetoUsuarios.Mostrarusuarios(paraTotalDeUsuarios);
     }
 
     /**
@@ -47,7 +51,7 @@ public class vista_usuarios extends javax.swing.JFrame {
         Button_Eliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        paraTotalDeUsuarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Usuarios");
@@ -185,7 +189,7 @@ public class vista_usuarios extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de usuarios"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        paraTotalDeUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -196,7 +200,7 @@ public class vista_usuarios extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(paraTotalDeUsuarios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -297,7 +301,7 @@ public class vista_usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable paraTotalDeUsuarios;
     private javax.swing.JTextField textfield_Plataforma;
     // End of variables declaration//GEN-END:variables
 }

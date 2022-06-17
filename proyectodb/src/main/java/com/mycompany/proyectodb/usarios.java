@@ -99,9 +99,9 @@ public class usarios {
                 
                 modelo.addRow(datos);
             }
-            
+            paraTotalDeUsuarios.setModel(modelo);
         }catch(Exception e){
-                
+                JOptionPane.showMessageDialog(null,"Error: "+ e.toString());
         }
     }
 }
