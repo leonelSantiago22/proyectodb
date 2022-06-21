@@ -112,7 +112,7 @@ public class juego {
                  
                  cs.execute();
                  
-                 JOptionPane.showMessageDialog(null, "Se modifico el juego correctament");
+                 JOptionPane.showMessageDialog(null, "Se inserto el juego correctament");
                  
              }catch(Exception e){
                  
@@ -158,7 +158,7 @@ public class juego {
                  cs.setString(5,getNombre_juego());
                  cs.execute();
                  
-                 JOptionPane.showMessageDialog(null, "Se inserto el juego correctament");
+                 JOptionPane.showMessageDialog(null, "Se modifico el juego correctament");
                  
              }catch(Exception e){
                  

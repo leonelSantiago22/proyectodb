@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class usarios {
     String nickname;
-    int fecha_nacimiento;
+    String fecha_nacimiento;
     String email;
     String nombre;
     String telefono;
@@ -26,11 +26,11 @@ public class usarios {
         this.nickname = nickname;
     }
 
-    public int getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(int fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
@@ -71,7 +71,6 @@ public class usarios {
         
         DefaultTableModel modelo = new DefaultTableModel(); 
         
-        
         String sql ="";
         modelo.addColumn(nickname);
         modelo.addColumn(plataforma);
@@ -104,4 +103,66 @@ public class usarios {
                 JOptionPane.showMessageDialog(null,"Error: "+ e.toString());
         }
     }
+    public void inserta_usuario(JTextField nickname_recibido, JTextField email_recibido, JTextField nombre_recibido, JTextField fecha_nac_recibida, JTextField telefono_recibido, JTextField plataforma_recibida)
+    {
+             setNickname(nickname_recibido.getText());
+            setEmail(email_recibido.getText());
+            setNombre(nombre_recibido.getText());
+            setFecha_nacimiento(fecha_nac_recibida.getText());
+            setTelefono(telefono_recibido.getText());
+            setPlataforma(fecha_nac_recibida.getText());
+             coneccion objetoConexion = new coneccion();
+             String consulta=" INSERT INTO usuario(nickname,email,nombre,fecha_nac,telefono,plataforma) \n" +
+"      VALUES (?,?,?,?,?,?);" ; //donde va a estar guardada la consulta 
+             
+             try{
+                 CallableStatement cs = objetoConexion.establecerConecxionstatic().prepareCall(consulta);
+                 cs.setString(1,getNickname());
+                 cs.setString(2,getEmail());
+                 cs.setString(3,getNombre());
+                 cs.setString(4,getFecha_nacimiento());
+                 cs.setString(5,getTelefono());
+                 cs.setString(6,getPlataforma());
+                 
+                 cs.execute();
+                 
+                 JOptionPane.showMessageDialog(null, "Usuario ingresado correctament");
+                 
+             }catch(Exception e){
+                 
+                 JOptionPane.showMessageDialog(null, "No se pudo ingresar al usuario");
+             }
+             
+    }
+    
+    //funcion de
+    public void seleccionar_alumno(JTable tabla_recibida,JTextField nickname_recibido, JTextField email_recibido, JTextField nombre_recibido, JTextField fecha_nac_recibida, JTextField telefono_recibido, JTextField plataforma_recibida )
+    {
+        try{
+            int fila = tabla_recibida.getSelectedRow();
+            
+            if(fila>=0){
+                nickname_recibido.setText(tabla_recibida.getValueAt(fila, 0).toString());
+                email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
+                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
+                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
+                email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
+                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Valio madre banda fila no seleccionada");
+            }
+            
+        }catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Valio madre banda"+e.toString());
+        }
+    }
+    
+    
+    
+    
+    
 }
+
+
+
