@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.proyectodb;
 
 import java.sql.*;
@@ -126,11 +123,11 @@ public class usarios {
                  
                  cs.execute();
                  
-                 JOptionPane.showMessageDialog(null, "Usuario ingresado correctament");
+                 JOptionPane.showMessageDialog(null, "USUARIO INGRESADO CORRECTAMENTE");
                  
              }catch(Exception e){
                  
-                 JOptionPane.showMessageDialog(null, "No se pudo ingresar al usuario");
+                 JOptionPane.showMessageDialog(null, "NO SE PUDO INGRESAR AL USUARIO CORRECTAMENTE");
              }
              
     }
@@ -144,25 +141,86 @@ public class usarios {
             if(fila>=0){
                 nickname_recibido.setText(tabla_recibida.getValueAt(fila, 0).toString());
                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
-                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
-                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
-                email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
-                 email_recibido.setText(tabla_recibida.getValueAt(fila, 1).toString());
+                 nombre_recibido.setText(tabla_recibida.getValueAt(fila, 2).toString());
+                 fecha_nac_recibida.setText(tabla_recibida.getValueAt(fila, 3).toString());
+                telefono_recibido.setText(tabla_recibida.getValueAt(fila, 4).toString());
+                 plataforma_recibida.setText(tabla_recibida.getValueAt(fila, 5).toString());
                 
             }else{
-                JOptionPane.showMessageDialog(null, "Valio madre banda fila no seleccionada");
+                JOptionPane.showMessageDialog(null, "FILA CORRECTAMENTE SELECCIONADA");
             }
             
         }catch(Exception e ){
-            JOptionPane.showMessageDialog(null, "Valio madre banda"+e.toString());
+            JOptionPane.showMessageDialog(null, "NO SE PUDO SELECCIONAR LA FILA DESEADA"+e.toString());
         }
+    }
+       
+        
+        
+    public void modificar_juego(JTextField nickname_recibido, JTextField email_recibido, JTextField nombre_recibido, JTextField fecha_nac_recibida, JTextField telefono_recibido, JTextField plataforma_recibida)
+    {
+            setNickname(nickname_recibido.getText());
+            setEmail(email_recibido.getText());
+            setNombre(nombre_recibido.getText());
+            setFecha_nacimiento(fecha_nac_recibida.getText());
+            setTelefono(telefono_recibido.getText());
+            setPlataforma(fecha_nac_recibida.getText());
+             coneccion objetoConexion = new coneccion();
+            String consulta="UPDATE usuario SET nickname=?, email=?, nombre=?, fecha_nac=?, telefono=?,plataforma=? WHERE usuario.nickname=?; " ; //donde va a estar guardada la consulta 
+             try{
+                 CallableStatement cs = objetoConexion.establecerConecxionstatic().prepareCall(consulta);
+                 cs.setString(1,getNickname());
+                 cs.setString(2,getEmail());
+                 cs.setString(3,getNombre());
+                 cs.setString(4,getFecha_nacimiento());
+                 cs.setString(5,getTelefono());
+                 cs.setString(6,getPlataforma());
+                 cs.execute();
+                 
+                 JOptionPane.showMessageDialog(null, "USUARIO MODIFICADO CORRECTAMENTE");
+                 
+             }catch(Exception e){
+                 
+                 JOptionPane.showMessageDialog(null, "NO SE PUDO MODIFICAR AL USUARIO SELECCIONADO"+e.toString());
+             }
+    }
+        
+        
+        public void eliminar_juego(JTextField nickname)
+    {
+        setNickname(nickname.getText());
+            coneccion objetoConexion = new coneccion();
+            String consulta="DELETE FROM usuario WHERE usuario.nickname=?; " ; //donde va a estar guardada la consulta 
+             try{
+                 CallableStatement cs = objetoConexion.establecerConecxionstatic().prepareCall(consulta);
+                 cs.setString(1,getNickname());
+                 cs.execute();
+                 
+                 JOptionPane.showMessageDialog(null, "SE ELIMINO AL USUARIO CORRECTAMENTE");
+                 
+             }catch(Exception e){
+                 
+                 JOptionPane.showMessageDialog(null, "NO SE ELIMINO AL USUARIO"+e.toString());
+             }
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     
     
     
     
-}
+
 
 
 
