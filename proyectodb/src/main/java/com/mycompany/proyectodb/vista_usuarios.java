@@ -16,6 +16,7 @@ public class vista_usuarios extends javax.swing.JFrame {
     //contructor
     public vista_usuarios() {
         initComponents();
+        //cambios de dani
         coneccion objetoconexion = new coneccion();
         objetoconexion.establecerConecxionstatic();
         //mostrar la coneecion se realizo o no
