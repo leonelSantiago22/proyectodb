@@ -16,7 +16,7 @@ public class coneccion {
    
    String usuario = "postgres";
    String contrasena = "Mr.Robot";
-   String bd = "proyecto_db";//nombre de la base de datos 
+   String bd = "proyectoBD";//nombre de la base de datos 
    String ip ="localhost";
    String puerto = "5432";
    

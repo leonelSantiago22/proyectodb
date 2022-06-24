@@ -15,5 +15,10 @@ public class inicioclass {
        
        vista_juegos objetovista2 = new vista_juegos();
        objetovista2.setVisible(true);
+       
+        vista_plataforma objetovista3 = new vista_plataforma();
+       objetovista3.setVisible(true);
+       
+       
     }
 }
