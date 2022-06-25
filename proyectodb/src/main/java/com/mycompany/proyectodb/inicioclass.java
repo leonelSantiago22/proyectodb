@@ -10,10 +10,13 @@ package com.mycompany.proyectodb;
  */
 public class inicioclass {
     public static void main(String[] args) {
-       vista_usuarios objetovista = new vista_usuarios();
-       objetovista.setVisible(true);
+       //vista_usuarios objetovista = new vista_usuarios();
+       //objetovista.setVisible(true);
        
-       vista_juegos objetovista2 = new vista_juegos();
-       objetovista2.setVisible(true);
+       //vista_juegos objetovista2 = new vista_juegos();
+       //objetovista2.setVisible(true);
+       
+       version_vista objetoVista3 = new version_vista();
+       objetoVista3.setVisible(true);
     }
 }
