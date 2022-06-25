@@ -15,8 +15,13 @@ public class coneccion {
    Connection conectar = null;
    
    String usuario = "postgres";
+<<<<<<< HEAD
    String contrasena = "root";
    String bd = "proyecto_db";//nombre de la base de datos 
+=======
+   //String contrasena = "Mr.Robot";
+   //String bd = "proyectoBD";//nombre de la base de datos 
+>>>>>>> 4f9cdf25bfae78391727966b3b702acde7c5f8ac
    String ip ="localhost";
    String puerto = "5433";
    
