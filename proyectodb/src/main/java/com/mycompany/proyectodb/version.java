@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyectodb;
 
+import java.net.ConnectException;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -119,5 +120,68 @@ public class version {
             JOptionPane.showMessageDialog(null, "Valio madre banda"+e.toString());
         }
     }
+
+    public void insertar_verison(JTextField version_text, JTextField requisito_text, JTextField creacion_text, JTextField juego_text, JTextField plataforma_text)
+    {
+        setVersion_id(version_text.getText());
+        setRequisito(requisito_text.getText());
+        setAnio_creacion(Integer.parseInt(creacion_text.getText()));
+        setJuego(juego_text.getText());
+        setPlataforma(plataforma_text.getText());
+        coneccion objConexion = new coneccion();
+        String consulta = "INSERT INTO version(version_id,requisito,año_creacion,juego,plataforma) VALUES(?,?,?,?,?);";
+        try {
+            CallableStatement cs = objConexion.establecerConecxionstatic().prepareCall(consulta);
+            cs.setString(1, getVersion_id());
+            cs.setString(2, getRequisito());
+            cs.setInt(3, getAnio_creacion());
+            cs.setString(4, getJuego());
+            cs.setString(5, getPlataforma());
+            cs.execute();
+            JOptionPane.showMessageDialog(null,"Se INSERTO correctamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Valio coliflor "+e.toString());
+        }
+    }
     
+    public void modificar_version(JTextField version_text, JTextField requisito_text, JTextField creacion_text, JTextField juego_text, JTextField plataforma_text)
+    {
+        setVersion_id(version_text.getText());
+        setRequisito(requisito_text.getText());
+        setAnio_creacion(Integer.parseInt(creacion_text.getText()));
+        setJuego(juego_text.getText());
+        setPlataforma(plataforma_text.getText());
+        coneccion objConexion = new coneccion();
+        String consulta = "UPDATE version SET version_id = ?, requisito = ?, año_creacion = ?, juego = ?, plataforma = ? WHERE version_id = ?;";
+        try {
+            CallableStatement cs = objConexion.establecerConecxionstatic().prepareCall(consulta);
+            cs.setString(1, getVersion_id());
+            cs.setString(2, getRequisito());
+            cs.setInt(3, getAnio_creacion());
+            cs.setString(4, getJuego());
+            cs.setString(5, getPlataforma());
+            cs.setString(6, getVersion_id());
+            cs.execute();
+            JOptionPane.showMessageDialog(null,"Se modifico correctamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Valio coliflor "+e.toString());
+        }
+    }
+    public void eliminar_version(JTextField version_text)
+    {
+        setVersion_id(version_text.getText());
+        coneccion objConeccion = new coneccion();
+        String consulta = "DELETE FROM version where version.version_id = ?;";
+        try {
+            CallableStatement cs = objConeccion.establecerConecxionstatic().prepareCall(consulta);
+            cs.setString(1, getVersion_id());
+            cs.execute();
+
+            JOptionPane.showMessageDialog(null, "Se borro el dato "+getVersion_id()+"Correctamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Valio colaaa "+e.toString());
+        }
+    }
 }
