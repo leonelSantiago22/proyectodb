@@ -59,10 +59,10 @@ public class juego {
         
         
         String sql ="";
-        modelo.addColumn(nombre_juego2);
-        modelo.addColumn(clasificacion_juego);
-        modelo.addColumn(genero_juego);
-        modelo.addColumn(descripcion_juego);
+        modelo.addColumn("nombre_juego2");
+        modelo.addColumn("clasificacion_juego");
+        modelo.addColumn("genero_juego");
+        modelo.addColumn("descripcion_juego");
         paraTotalDeUsuarios.setModel(modelo);
         
         //sql2 = ""

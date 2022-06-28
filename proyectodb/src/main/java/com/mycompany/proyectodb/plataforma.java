@@ -51,9 +51,9 @@ public class plataforma {
         
         
         String sql =" ";
-        modelo.addColumn(nombre_plataforma);
-        modelo.addColumn(modelo_plataforma);
-        modelo.addColumn(fecha_lanzamiento_plataforma);
+        modelo.addColumn("nombre_plataforma");
+        modelo.addColumn("modelo_plataforma");
+        modelo.addColumn("fecha_lanzamiento_plataforma");
         paraTotalDePlataforma.setModel(modelo);
         
         //sql2 = ""

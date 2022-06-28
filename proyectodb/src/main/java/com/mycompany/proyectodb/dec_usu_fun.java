@@ -55,10 +55,10 @@ public class dec_usu_fun {
         DefaultTableModel modelo = new DefaultTableModel();
 
         String sql = "";
-        modelo.addColumn(sum);
-        modelo.addColumn(nickname);
-        modelo.addColumn(nombre);
-        modelo.addColumn(email);
+        modelo.addColumn("sum");
+        modelo.addColumn("nickname");
+        modelo.addColumn("nombre");
+        modelo.addColumn("email");
 
         sql = "SELECT sum(t.monto),u.nickname,u.nombre,u.email FROM transaccion t,usuario u WHERE u.nickname=t.nickname GROUP BY (u.nickname) ORDER BY sum(t.monto) DESC ; ";
 

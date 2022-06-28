@@ -69,12 +69,12 @@ public class usarios {
         DefaultTableModel modelo = new DefaultTableModel(); 
         
         String sql ="";
-        modelo.addColumn(nickname);
-        modelo.addColumn(email);
-        modelo.addColumn(nombre);
-        modelo.addColumn(fecha_nacimiento);
-        modelo.addColumn(telefono);
-        modelo.addColumn(plataforma);
+        modelo.addColumn("nickname");
+        modelo.addColumn("email");
+        modelo.addColumn("nombre");
+        modelo.addColumn("fecha_nacimiento");
+        modelo.addColumn("telefono");
+        modelo.addColumn("plataforma");
         
         
         paraTotalDeUsuarios.setModel(modelo);

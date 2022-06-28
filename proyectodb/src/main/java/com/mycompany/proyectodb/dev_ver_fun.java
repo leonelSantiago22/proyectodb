@@ -63,12 +63,13 @@ public class dev_ver_fun {
         coneccion objetoConexion = new coneccion();
         DefaultTableModel modelo = new DefaultTableModel();
         String sql = "";
-        modelo.addColumn(sum);
-        modelo.addColumn(version_id);
-        modelo.addColumn(juego);
-        modelo.addColumn(plataforma);
-        modelo.addColumn(modelo);
-        sql = "SELECT sum(t.monto),v.version_id,v.juego,v.plataforma,p.modelo FROM transaccion t,modalidad_pago m,version v,plataforma p WHERE m.version_id=v.version_id AND m.id_pago=t.id_pago AND v.plataforma=p.nombre GROUP BY (v.version_id,v.juego,p.nombre,p.modelo ) ORDER BY sum(t.monto) DESC ;";
+    sql = "SELECT sum(t.monto),v.version_id,v.juego,v.plataforma,p.modelo FROM transaccion t,modalidad_pago m,version v,plataforma p WHERE m.version_id=v.version_id AND m.id_pago=t.id_pago AND v.plataforma=p.nombre GROUP BY (v.version_id,v.juego,p.nombre,p.modelo ) ORDER BY sum(t.monto) DESC ;";
+        modelo.addColumn("sum");
+        modelo.addColumn("version_id");
+        modelo.addColumn("juego");
+        modelo.addColumn("plataforma");
+        modelo.addColumn("modelo");
+        
         paramostrar.setModel(modelo);
         String [] datos = new String[5];
         

@@ -69,11 +69,11 @@ public class version {
             
             String sql ="";
             
-            modelo.addColumn(version_id);
-            modelo.addColumn(requisito);
-            modelo.addColumn(anio_creacion);
-            modelo.addColumn(juego);
-            modelo.addColumn(plataforma);
+            modelo.addColumn("version_id");
+            modelo.addColumn("requisito");
+            modelo.addColumn("anio_creacion");
+            modelo.addColumn("juego");
+            modelo.addColumn("plataforma");
             paraMostrarVersiones.setModel(modelo);
             
             sql = "select version_id,requisito,año_creacion,juego,plataforma from version";
